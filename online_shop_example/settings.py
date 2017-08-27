@@ -24,7 +24,7 @@ SECRET_KEY = 'lb7(_z786=xt3h$%4x5+=v74$z7n^_u)^u^_&pi@)e#dd8$kov'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['7622ee75.ngrok.io', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.ngrok.io']
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'orders',
     'paypal.standard.ipn',
     'payment',
+    'coupons',
 ]
 
 MIDDLEWARE = [
@@ -121,18 +122,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'online_shop_example', 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 PAYPAL_RECEIVER_EMAIL = 'dangkhoa114@gmail.com'
 PAYPAL_TEST = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dangkhoa114@gmail.com'
+EMAIL_HOST_PASSWORD = 'Dangkhoa@1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
